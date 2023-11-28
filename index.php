@@ -72,10 +72,10 @@ $games = [
                     $ageNumeric = is_numeric($age);
 
                     if ($nameLength && $mailValid && $ageNumeric) {
-                        echo "Accesso riuscito";
+                        echo '<h3 class="alert alert-primary">Accesso riuscito</h3>';
                         $formVisible = false;
                     } else {
-                        echo "Accesso negato";
+                        echo '<h3 class="alert alert-danger">Accesso negato</h3>';
                     }
                 }
 
