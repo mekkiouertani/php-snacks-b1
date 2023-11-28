@@ -25,9 +25,8 @@ $games = [
         'goal_away' => 44,
     ],
 ];
-
-
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -39,12 +38,12 @@ $games = [
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 
-<body>
-    <h1 class="text-center">PHP SNACK</h1>
-    <main class="container-fluid d-flex">
+<body class="bg-black">
+    <h1 class="text-center text-white">PHP SNACK</h1>
+    <main class="container-fluid d-flex ">
 
         <!-- SNACK 1 -->
-        <section id="snak-1" class="bg-primary w-100 p-2">
+        <section id="snak-1" class="bg-primary w-100 p-2 ">
             <h2 class=" text-center">Partite di Basket</h2>
             <div class="mt-5">
                 <?php
@@ -69,7 +68,7 @@ $games = [
                     $age = $_GET['age'];
 
                     $nameLength = strlen($name) > 3;
-                    $mailValid = filter_var($mail, FILTER_VALIDATE_EMAIL) !== false;
+                    $mailValid = filter_var($mail, FILTER_VALIDATE_EMAIL);
                     $ageNumeric = is_numeric($age);
 
                     if ($nameLength && $mailValid && $ageNumeric) {
@@ -102,7 +101,17 @@ $games = [
         <!-- SNACK 3 -->
         <section id="snak-3" class="bg-danger w-100 text-center p-2">
             <h2>BONUS</h2>
+            <div class="mt-5">
+                <?php
+                $paragrafo = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac odio id leo tincidunt porttitor. Integer vel justo nec nisl aliquet dignissim eu ut elit. Nullam hendrerit, metus nec luctus vestibulum, urna ipsum ullamcorper metus, id tincidunt elit lacus a neque. Suspendisse id vestibulum neque. Vivamus id tellus et risus tristique commodo. Morbi accumsan semper metus. Proin volutpat felis nec malesuada fermentum. Sed vitae mi in quam iaculis hendrerit. Ut suscipit elit vel sapien egestas venenatis. In hac habitasse platea dictumst.";
+                $paragrafi = explode('.', $paragrafo);
+                foreach ($paragrafi as $paragrafo) {
+                    echo "<p>{$paragrafo}</p>";
+                }
+                ?>
+            </div>
         </section>
+
     </main>
 </body>
 
