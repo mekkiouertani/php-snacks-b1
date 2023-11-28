@@ -24,9 +24,10 @@ $games = [
         'goal_home' => 3,
         'goal_away' => 44,
     ],
-]
+];
 
-    ?>
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,22 +42,57 @@ $games = [
 <body>
     <h1 class="text-center">PHP SNACK</h1>
     <main class="container-fluid d-flex">
+
         <!-- SNACK 1 -->
         <section id="snak-1" class="bg-primary w-100 p-2">
             <h2 class=" text-center">Partite di Basket</h2>
-            <div class="mt-5"></div>
-            <?php
-            for ($i = 0; $i < count($games); $i++) {
-                $game = $games[$i];
-                echo "<h4>" . $game['team_home'] . " - " . $game['team_away'] . " | " . $game['goal_home'] . " - " . $game['goal_away'] . "</h4>";
-            }
-            ?>
+            <div class="mt-5">
+                <?php
+                for ($i = 0; $i < count($games); $i++) {
+                    $game = $games[$i];
+                    echo "<h4>" . $game['team_home'] . " - " . $game['team_away'] . " | " . $game['goal_home'] . " - " . $game['goal_away'] . "</h4>";
+                }
+                ?>
             </div>
         </section>
+
         <!-- SNACK 2 -->
-        <section id="snak-2" class="bg-warning w-100 text-center p-2">
+        <section id="snak-2" class="bg-warning w-100  text-center p-2">
             <h2>Form</h2>
+            <div class="mt-5">
+                <form action="index.php" method="get">
+                    <label for=" name" class="form-text">Name:</label>
+                    <input type="text" name="name" required class="d-block m-auto form-control">
+
+                    <label for="mail" class="form-text">Mail:</label>
+                    <input type="text" name="mail" required class="d-block m-auto form-control">
+
+                    <label for="age" class="form-text">Age:</label>
+                    <input type="text" name="age" required class="d-block m-auto form-control">
+
+                    <button type="submit" class="mt-3 btn btn-success">INVIA</button>
+                </form>
+
+                <?php
+                if (isset($_GET['name']) && isset($_GET['mail']) && isset($_GET['age'])) {
+                    $name = $_GET['name'];
+                    $mail = $_GET['mail'];
+                    $age = $_GET['age'];
+
+                    $nameLength = strlen($name) > 3;
+                    $mailValid = filter_var($mail, FILTER_VALIDATE_EMAIL);
+                    $ageNumeric = is_numeric($age);
+
+                    if ($nameLength && $mailValid && $ageNumeric) {
+                        echo "Accesso riuscito";
+                    } else {
+                        echo "Accesso negato";
+                    }
+                }
+                ?>
+            </div>
         </section>
+
         <!-- SNACK 3 -->
         <section id="snak-3" class="bg-danger w-100 text-center p-2">
             <h2>BONUS</h2>
