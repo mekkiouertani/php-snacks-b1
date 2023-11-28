@@ -1,7 +1,32 @@
 <?php
+$games = [
+    [
+        'team_home' => 'Olimpia Milano',
+        'team_away' => 'Cantù',
+        'goal_home' => 55,
+        'goal_away' => 60,
+    ],
+    [
+        'team_home' => 'Globe Trotters',
+        'team_away' => 'Los Angeles Lakers',
+        'goal_home' => 3,
+        'goal_away' => 45,
+    ],
+    [
+        'team_home' => 'Chicago Bulls',
+        'team_away' => 'Miami Heat',
+        'goal_home' => 20,
+        'goal_away' => 16,
+    ],
+    [
+        'team_home' => 'Boston Celtics',
+        'team_away' => 'Golden State Warriors',
+        'goal_home' => 3,
+        'goal_away' => 44,
+    ],
+]
 
-
-?>
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,9 +41,26 @@
 <body>
     <h1 class="text-center">PHP SNACK</h1>
     <main class="container-fluid d-flex">
-        <section id="snak-1" class="bg-primary w-100 text-center">SNACK 1</section>
-        <section id="snak-2" class="bg-warning w-100 text-center">SNACK 2</section>
-        <section id="snak-3" class="bg-danger w-100 text-center">SNACK 3</section>
+        <!-- SNACK 1 -->
+        <section id="snak-1" class="bg-primary w-100 p-2">
+            <h2 class=" text-center">Partite di Basket</h2>
+            <div class="mt-5"></div>
+            <?php
+            for ($i = 0; $i < count($games); $i++) {
+                $game = $games[$i];
+                echo "<h4>" . $game['team_home'] . " - " . $game['team_away'] . " | " . $game['goal_home'] . " - " . $game['goal_away'] . "</h4>";
+            }
+            ?>
+            </div>
+        </section>
+        <!-- SNACK 2 -->
+        <section id="snak-2" class="bg-warning w-100 text-center p-2">
+            <h2>Form</h2>
+        </section>
+        <!-- SNACK 3 -->
+        <section id="snak-3" class="bg-danger w-100 text-center p-2">
+            <h2>BONUS</h2>
+        </section>
     </main>
 </body>
 
