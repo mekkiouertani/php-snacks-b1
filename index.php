@@ -60,36 +60,42 @@ $games = [
         <section id="snak-2" class="bg-warning w-100  text-center p-2">
             <h2>Form</h2>
             <div class="mt-5">
-                <form action="index.php" method="get">
-                    <label for=" name" class="form-text">Name:</label>
-                    <input type="text" name="name" required class="d-block m-auto form-control">
-
-                    <label for="mail" class="form-text">Mail:</label>
-                    <input type="text" name="mail" required class="d-block m-auto form-control">
-
-                    <label for="age" class="form-text">Age:</label>
-                    <input type="text" name="age" required class="d-block m-auto form-control">
-
-                    <button type="submit" class="mt-3 btn btn-success">INVIA</button>
-                </form>
-
                 <?php
+                $formVisible = true;
+
                 if (isset($_GET['name']) && isset($_GET['mail']) && isset($_GET['age'])) {
                     $name = $_GET['name'];
                     $mail = $_GET['mail'];
                     $age = $_GET['age'];
 
                     $nameLength = strlen($name) > 3;
-                    $mailValid = filter_var($mail, FILTER_VALIDATE_EMAIL);
+                    $mailValid = filter_var($mail, FILTER_VALIDATE_EMAIL) !== false;
                     $ageNumeric = is_numeric($age);
 
                     if ($nameLength && $mailValid && $ageNumeric) {
                         echo "Accesso riuscito";
+                        $formVisible = false;
                     } else {
                         echo "Accesso negato";
                     }
                 }
-                ?>
+
+                if ($formVisible) {
+                    ?>
+                    <form action="index.php" method="get">
+                        <label for="name" class="form-text">Name:</label>
+                        <input type="text" name="name" required class="d-block m-auto form-control">
+
+                        <label for="mail" class="form-text">Mail:</label>
+                        <input type="text" name="mail" required class="d-block m-auto form-control">
+
+                        <label for="age" class="form-text">Age:</label>
+                        <input type="text" name="age" required class="d-block m-auto form-control">
+
+                        <button type="submit" class="mt-3 btn btn-success">INVIA</button>
+                    </form>
+                <?php } ?>
+
             </div>
         </section>
 
